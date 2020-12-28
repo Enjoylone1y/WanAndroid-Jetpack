@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/item_home"
+        android:title="首页"
+        android:icon="@mipmap/iv_home"/>
+
+    <item android:id="@+id/item_system"
+        android:title="体系"
+        android:icon="@mipmap/ic_system"/>
+
+    <item android:id="@+id/item_navigation"
+        android:title="导航"
+        android:icon="@mipmap/ic_navigation"/>
+
+    <item android:id="@+id/item_projects"
+        android:title="项目"
+        android:icon="@mipmap/ic_projects"/>
+</menu>
