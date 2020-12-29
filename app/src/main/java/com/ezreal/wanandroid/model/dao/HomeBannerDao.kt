@@ -10,15 +10,14 @@ import com.ezreal.wanandroid.model.entities.HomeBannerInfo
 interface HomeBannerDao {
 
     @Query("SELECT * FROM HomeBanner")
-    suspend fun getAll():List<HomeBannerInfo>
-
-
-    @Query("DELETE FROM HomeBanner")
-    suspend fun deleteAll()
+    fun getAll():List<HomeBannerInfo>
 
     @Insert
     suspend fun insertAll(vararg homeBanner: HomeBannerInfo)
 
     @Delete
-    suspend fun deleteItem(bannerInfo: HomeBannerInfo)
+    fun deleteItem(bannerInfo: HomeBannerInfo)
+
+    @Query("DELETE FROM HomeBanner")
+    fun deleteAll()
 }

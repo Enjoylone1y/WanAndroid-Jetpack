@@ -10,7 +10,7 @@ buildscript {
         constraintLayoutVersion = '2.1.0-alpha1'
         coroutinesVersion = "1.3.4"
         fragmentVersion = '1.3.0-beta02'
-        glideVersion = '4.10.0'
+        glideVersion = '4.11.0'
         gradleVersion = '4.1.0'
         gsonVersion = '2.8.6'
         assistedInjectVersion = '0.5.2'
@@ -21,7 +21,8 @@ buildscript {
         ktlintVersion = '0.38.1'
         ktxVersion = '1.3.2'
         lifecycleVersion = '2.2.0'
-        okhttpLoggingVersion = '4.7.2'
+        okhttpVersion = '4.9.0'
+        okhttpLoggingVersion = '4.9.0'
         pagingVersion = '3.0.0-alpha02'
         recyclerViewVersion = '1.2.0-beta01'
         retrofitVersion = '2.9.0'

@@ -28,8 +28,8 @@ object AppModule {
         logInterceptor.level = HttpLoggingInterceptor.Level.BODY
         val client = OkHttpClient().newBuilder()
             .addInterceptor(logInterceptor)
-            .connectTimeout(5, TimeUnit.SECONDS)
-            .writeTimeout(10, TimeUnit.SECONDS)
+            .connectTimeout(20, TimeUnit.SECONDS)
+            .writeTimeout(20, TimeUnit.SECONDS)
             .readTimeout(20, TimeUnit.SECONDS)
             .build()
 

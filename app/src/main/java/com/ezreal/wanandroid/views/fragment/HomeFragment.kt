@@ -12,11 +12,12 @@ import com.ezreal.wanandroid.adapter.HomeBannerAdapter
 import com.ezreal.wanandroid.databinding.FragmentHomeBinding
 import com.ezreal.wanandroid.model.entities.HomeBannerInfo
 import com.ezreal.wanandroid.model.entities.Status
-import com.ezreal.wanandroid.utils.Utils
+import com.ezreal.wanandroid.utils.LogUtils
 import com.ezreal.wanandroid.viewmodels.HomeViewModel
 
 import com.youth.banner.indicator.RectangleIndicator
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.ArrayList
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -31,6 +32,15 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
+
+        binding.bannerHome
+                .setAdapter(HomeBannerAdapter(ArrayList<HomeBannerInfo>()))
+                .addBannerLifecycleObserver(viewLifecycleOwner)
+                .setIndicator(RectangleIndicator(requireContext()))
+                .setOnBannerListener { banner, position ->
+                    //TODO
+                }
+
         return binding.root
     }
 
@@ -39,30 +49,20 @@ class HomeFragment : Fragment() {
 
         homeViewModel.bannerList.observe(viewLifecycleOwner) { res ->
             when (res.status) {
-                Status.SUCCESS -> initBanner(res.data!!)
+                Status.SUCCESS ->  binding.bannerHome.setDatas(res.data!!)
 
                 Status.ERROR -> {
-                    Utils.LogE(res.message!!)
+                    LogUtils.LogE(res.message!!)
                 }
 
                 Status.LOADING -> {
-                    Utils.LogI("loading....")
+                    LogUtils.LogI("loading....")
                 }
             }
         }
-
-
     }
 
-    private fun initBanner(bannerList: List<HomeBannerInfo>) {
-        binding.bannerHome
-            .setAdapter(HomeBannerAdapter(bannerList))
-            .addBannerLifecycleObserver(viewLifecycleOwner)
-            .setIndicator(RectangleIndicator(requireContext()))
-            .setOnBannerListener { banner, position ->
-                //TODO
-            }
-    }
+
 
 
 
